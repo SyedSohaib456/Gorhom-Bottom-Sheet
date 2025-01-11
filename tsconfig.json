@@ -15,6 +15,12 @@
       "~app/*": [
         "src/app/*"
       ],
+      "~screens/*": [
+        "src/app/screens/*"
+      ],
+      "~assets/*": [
+        "assets/*"
+      ],
       "~hooks/*": [
         "src/core/hooks/*"
       ],
