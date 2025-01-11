@@ -1,6 +1,8 @@
 import React from 'react';
 import {View, Text,  SafeAreaView} from 'react-native';
-import '../src/theme/global.css';
+import '~theme/global.css';
+import Button from '~core/components/Button/Button';
+
 const App = () => {
   return (
     <SafeAreaView>
@@ -8,6 +10,8 @@ const App = () => {
         <Text className="text-3xl font-semibold text-purple-600">
           Welcome to Native
         </Text>
+        <Button title='PRESS' onPress={()=>console.log('Pressed')
+        }/>
       </View>
     </SafeAreaView>
   );
