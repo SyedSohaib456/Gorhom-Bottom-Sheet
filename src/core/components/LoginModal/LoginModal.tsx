@@ -1,6 +1,6 @@
 import {BottomSheetTextInput, BottomSheetView} from '@gorhom/bottom-sheet';
 import React, {forwardRef, useImperativeHandle, useRef} from 'react';
-import {View, Text, Keyboard} from 'react-native';
+import {View, Text, Keyboard, StyleSheet} from 'react-native';
 import BottomSheetWrapperContainer from '~core/components/BottomSheetWrapper/BottomSheetWrapperContainer';
 import ModalHandling from '~core/components/BottomSheetWrapper/ModalHandler';
 import Button from '~core/components/Button/Button';
@@ -23,14 +23,12 @@ const LoginModal = forwardRef<LoginModalRef, LoginModalProps>(
         ModalHandling.setIsAnyModalVisibleAlready(true);
       } else {
         Keyboard.dismiss();
-        bottomSheetRef.current?.close();
+        bottomSheetRef.current.close();
         ModalHandling.setIsAnyModalVisibleAlready(false);
       }
     };
 
-    useImperativeHandle(ref, () => ({
-      setVisibleBottomSheet,
-    }));
+    useImperativeHandle(ref, () => ({setVisibleBottomSheet}));
 
     return (
       <BottomSheetWrapperContainer
@@ -38,39 +36,42 @@ const LoginModal = forwardRef<LoginModalRef, LoginModalProps>(
         setVisibleBottomSheet={setVisibleBottomSheet}
         enablePanDownToClose
         backdropClose
+        snapPoints={['50%']}
         onCloseBottomSheet={onClose}
-        style={{zIndex: 999,}}
+        style={{zIndex: 999}}
         >
-        <BottomSheetView
-          className="bg-[#c1099cc6] rounded-lg p-5"
-          style={{
-            height: '100%',
-            
-          }}>
-          <View>
-            <View className="mb-3 pt-4">
-              <Text className="text-3xl font-bold text-white">
-                Login to your account
-              </Text>
+          <BottomSheetView
+            className="bg-[#c1099cc6] rounded-lg p-5"
+            style={[styles.bottomSheetMainView, styles.zeeIndex]}>
+            <View>
+              <View className="mb-3 pt-4">
+                <Text className="text-3xl font-bold text-white">
+                  Login to your account
+                </Text>
+              </View>
+              <View className="mb-2 pt-3">
+                <BottomSheetTextInput
+                  placeholder="Enter your email..."
+                  placeholderTextColor={'white'}
+                  className="border-2 rounded-lg border-white py-4 px-2 text-white"
+                />
+              </View>
+              <View className="mt-3">
+                <Button
+                  title="Login"
+                  onPress={() => console.log('LOGIN MODAL BUTTON')}
+                />
+              </View>
             </View>
-            <View className="mb-2 pt-3">
-              <BottomSheetTextInput
-                placeholder="Enter your email..."
-                placeholderTextColor={'white'}
-                className="border-2 rounded-lg border-white py-4 px-2 text-white"
-              />
-            </View>
-            <View className="mt-3">
-              <Button
-                title="Login"
-                onPress={() => console.log('LOGIN MODAL BUTTON')}
-              />
-            </View>
-          </View>
-        </BottomSheetView>
+          </BottomSheetView>
       </BottomSheetWrapperContainer>
     );
   },
 );
 
 export default LoginModal;
+
+const styles = StyleSheet.create({
+  bottomSheetMainView: {height: '100%'},
+  zeeIndex: {zIndex: -10},
+});

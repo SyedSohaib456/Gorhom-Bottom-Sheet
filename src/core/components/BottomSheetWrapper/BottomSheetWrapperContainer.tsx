@@ -92,6 +92,7 @@ const InvestHabibiBottomSheetContainer = forwardRef<
               onCloseBottomSheet();
             }
           }}
+          enableDynamicSizing={false} //make it true where height varies
           {...rest}
         >
           {isTwoAlfredShow ? (

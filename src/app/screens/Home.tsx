@@ -11,8 +11,8 @@ const Home = () => {
   };
 
   return (
-    <View className="flex-1 bg-[#fee2ff] items-center justify-center">
-      <View className="w-full h-full p-4 justify-start">
+    <View className="flex-1 flex-grow bg-[#fee2ff] items-center justify-center">
+      <View className="w-full h-full p-4 justify-start absolute">
         <Text className="text-2xl text-red-600">Simple Modal</Text>
         <View className="w-2/6 mt-4">
           <Button onPress={handleOpenCloseLoginModal} title="LOGIN" />
