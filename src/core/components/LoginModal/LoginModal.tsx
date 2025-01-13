@@ -73,5 +73,5 @@ export default LoginModal;
 
 const styles = StyleSheet.create({
   bottomSheetMainView: {height: '100%'},
-  zeeIndex: {zIndex: -10},
+  zeeIndex: {zIndex: 9999},
 });

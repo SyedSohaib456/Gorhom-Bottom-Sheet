@@ -3,11 +3,18 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from '~screens/Home';
+import FlashModalScreen from '~app/screens/FlashModalScreen';
 import {Host} from 'react-native-portalize';
 import {KeyboardProvider} from 'react-native-keyboard-controller';
 import '~theme/global.css';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-const Stack = createStackNavigator();
+
+export type  RootStackParamList = {
+  Home: undefined;
+  FlashScreen: undefined;
+};
+
+const Stack = createStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
@@ -28,6 +35,11 @@ export default function App() {
                   name="Home"
                   component={HomeScreen}
                   options={{title: 'Home Screen'}}
+                />
+                <Stack.Screen
+                  name="FlashScreen"
+                  component={FlashModalScreen}
+                  options={{title: 'Flash Modal'}}
                 />
               </Stack.Navigator>
             </KeyboardProvider>
